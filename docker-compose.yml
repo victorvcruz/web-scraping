@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  postgres-docker:
+    image: postgres
+    environment:
+      POSTGRES_USERNAME: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - network
+  metabase-docker:
+    image: metabase/metabase:latest
+    volumes:
+      - ./metabase-data:/metabase-data
+    ports:
+      - 3000:3000
+    environment:
+      MB_DB_FILE: ./metabase-data/metabase.db
+    networks:
+      - network
+    depends_on:
+      - postgres-docker
+      
+networks: 
+  network:
+    driver: bridge
