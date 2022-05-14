@@ -1,5 +1,4 @@
 from bs4.element import Tag
-
 import config
 
 
@@ -28,3 +27,7 @@ class Product:
         if div_image is None:
             div_image = div.find(config.image_type, class_=config.image_class_none)
         self.image = div_image['src']
+
+        self.link = div.find(config.link_type, class_=config.link_class)['href']
+
+
