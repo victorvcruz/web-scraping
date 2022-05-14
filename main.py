@@ -1,4 +1,3 @@
-from config import all_filters, all_states
-from read_pages import read_pages
+from api import app
 
-read_pages('bicicleta', 1, 5, ['go'], '', '', all_filters[1])
+app.run()
