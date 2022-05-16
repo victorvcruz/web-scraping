@@ -8,7 +8,7 @@ database = ConnectionPostgreSQL()
 
 
 def create_url(search, state, page, price_min, price_max, filter):
-    return 'https://{}.olx.com.br/?o={}&pe={}&ps={}&q={}{}'.format(state, page, price_max, price_min, search, filter)
+    return 'https://{}.olx.com.br/?o={}&pe={}&ps={}&q={}{}'.format(state, page, price_max, price_min, search.replace(" ", "%20"), filter)
 
 
 def read_pages(search, page_start, page_end, states, price_min, price_max, filter):
@@ -24,7 +24,7 @@ def read_pages(search, page_start, page_end, states, price_min, price_max, filte
             div_products = soup.find_all(config.div_type, class_=config.div_class)
 
             for div_product in div_products:
-                prd = Product(div_product, state)
+                prd = Product(div_product, state, search)
                 database.insert_product(prd)
                 products_list.append(prd)
 
