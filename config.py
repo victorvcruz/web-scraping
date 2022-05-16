@@ -23,8 +23,8 @@ db_user = "postgres"
 db_password = "postgres"
 db_port = "5432"
 
-all_states = ['ac', 'es', 'pb', 'ro', 'al', 'go', 'pr', 'rr', 'ap', 'ma', 'pe', 'sc', 'am',
-              'mt', 'pi', 'sp', 'ba', 'ms', 'rj', 'se', 'ce', 'mg', 'rn', 'to', 'pa', 'rs']
+all_states = ["ac", "es", "pb", "ro", "al", "go", "pr", "rr", "ap", "ma", "pe", "sc", "am",
+              "mt", "pi", "sp", "ba", "ms", "rj", "se", "ce", "mg", "rn", "to", "pa", "rs"]
 
 filter_recent = '&sf=1'
 filter_relevance = ''
