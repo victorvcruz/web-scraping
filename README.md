@@ -16,7 +16,7 @@ To stop execution run `sudo docker-compose down`
 
 ### Application of the requisition
 
-* parameters:
+* query parameters:
 ```
 search= (your search on olx)
 
