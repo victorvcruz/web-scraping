@@ -8,7 +8,7 @@ database = ConnectionPostgreSQL()
 
 
 def create_url(search, state, page, price_min, price_max, filter):
-    return 'https://{}.olx.com.br/?o={}&pe={}&ps={}&q={}{}'.format(state, page, price_max, price_min, search, filter)
+    return 'https://{}.olx.com.br/?o={}&pe={}&ps={}&q={}{}'.format(state, page, price_max, price_min, search.replace(" ", "%20"), filter)
 
 
 def read_pages(search, page_start, page_end, states, price_min, price_max, filter):
@@ -26,7 +26,6 @@ def read_pages(search, page_start, page_end, states, price_min, price_max, filte
 
             for div_product in div_products:
                 prd = Product(div_product, state, search)
-                print(prd.search)
                 database.insert_product(prd)
                 products_list.append(prd)
 

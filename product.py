@@ -32,3 +32,6 @@ class Product:
         self.link = div.find(config.link_type, class_=config.link_class)['href']
 
 
+
+
+

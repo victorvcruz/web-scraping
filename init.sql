@@ -4,6 +4,7 @@ CREATE TABLE public.database_olx
     name  VARCHAR(200),
     price REAL,
     state VARCHAR(5),
+    search VARCHAR(100),
     ddd   INTEGER,
     cep   VARCHAR(100),
     image VARCHAR(255)
