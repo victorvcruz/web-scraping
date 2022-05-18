@@ -29,5 +29,5 @@ class ConnectionPostgreSQL:
             self.conn.commit()
             cur.close()
         except (Exception, psycopg2.Error) as error:
-            print("Failed to insert record into table", error)
+            print(f"Failed to insert {product.link} into table", error)
 

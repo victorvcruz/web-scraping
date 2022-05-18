@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify
-from config import ProductJSONEncoder
+
+from config import ProductJSONEncoder, all_states
 from filters import Filter
 from read_pages import read_pages
+from request_api import RequestApi
 
 app = Flask(__name__)
 app.json_encoder = ProductJSONEncoder
@@ -9,16 +11,8 @@ app.json_encoder = ProductJSONEncoder
 
 @app.route('/products', methods=["POST", "GET"])
 def products():
-    input_json = request.get_json(force=False, silent=True)
-
-    args = request.args
-    search = args.get("search")
-    page_start = args.get("page_start")
-    page_end = args.get("page_end")
-    price_min = args.get("price_min")
-    price_max = args.get("price_max")
-    filter = args.get("filter")
-    states = input_json['states']
+    request_api = RequestApi(request)
 
     return jsonify(
-        read_pages(search, int(page_start), int(page_end), states, price_min, price_max, Filter[filter].value))
+        read_pages(request_api.search, int(request_api.page_start), int(request_api.page_end), request_api.states,
+                   request_api.price_min, request_api.price_max, Filter[request_api.filter].value))

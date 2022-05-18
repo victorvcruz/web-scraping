@@ -4,7 +4,7 @@ import config
 
 class Product:
 
-    def __init__(self, div: Tag, state):
+    def __init__(self, div: Tag, state, search):
         div_name = div.find(config.name_type, class_=config.name_class)
         if div_name is None:
             self.name = div.find(config.name_type, class_=config.name_class_none).get_text().strip()
@@ -22,6 +22,7 @@ class Product:
         self.cep = divisor_ddd[0]
         self.DDD = divisor_ddd[1]
         self.state = state.upper()
+        self.search = search.capitalize()
 
         div_image = div.find(config.image_type, class_=config.image_class)
         if div_image is None:

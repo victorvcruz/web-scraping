@@ -22,9 +22,11 @@ def read_pages(search, page_start, page_end, states, price_min, price_max, filte
             webpage = urlopen(url).read()
             soup = BeautifulSoup(webpage, 'html.parser')
             div_products = soup.find_all(config.div_type, class_=config.div_class)
+            print(type(div_products))
 
             for div_product in div_products:
-                prd = Product(div_product, state)
+                prd = Product(div_product, state, search)
+                print(prd.search)
                 database.insert_product(prd)
                 products_list.append(prd)
 
