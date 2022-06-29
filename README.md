@@ -5,7 +5,7 @@ To run project you need Python, Pip, [Docker](https://docs.docker.com/engine/ins
 ## How to run project
 
 1. run `sudo docker-compose up -d` in root directory
-2. install missing dependencies of python
+2. run `pip install -r requirements.txt` in root directory
 3. run main.py 
 4. in http://127.0.0.1:5000/products insert your request
 5. your requisition was made in database: 'database_olx'
